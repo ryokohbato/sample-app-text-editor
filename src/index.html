@@ -9,8 +9,10 @@
   <body class="r-container bg-gray-50 dark:bg-gray-750 h-full-v">
     <header class="r-header bg-primary relative">
       <h1 class="text-primary-contrast absolute top-1/2 left-3 transform -translate-y-1/2">簡易テキストエディタ</h1>
-      <button class="absolute top-1/2 right-3 transform -translate-y-1/2" role="toggle dark mode">
+      <button id="toggle-dark-mode" class="absolute top-1/2 right-3 transform -translate-y-1/2" role="toggle dark mode">
         <img src="./img/dark_mode.svg" alt="dark mode" class="h-6 w-6">
+        <p id="dark-mode-disabled-text" class="text-primary-contrast text-xs mt-0.5" aria-disabled="false">OFF</p>
+        <p id="dark-mode-enabled-text" class="text-primary-contrast text-xs mt-0.5" aria-disabled="true">ON</p>
       </button>
     </header>
     <section class="r-header_item bg-gray-200 dark:bg-gray-800"></section>

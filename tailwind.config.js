@@ -30,10 +30,10 @@ module.exports = {
         '.r-container': {
           display: 'grid',
           gridTemplate:
-            '"header header header" 40px\
+            '"header header header" 48px\
             "header_item header_item header_item" 60px\
             "main_bg__l main main_bg__r" 1fr\
-            "footer footer footer" 20px\
+            "footer footer footer" 24px\
             /30px 1fr 30px',
         },
 
@@ -69,6 +69,10 @@ module.exports = {
       const newUtilities = {
         '.h-full-v': {
           height: '100vh',
+        },
+
+        '[aria-disabled=true]': {
+          display: 'none',
         },
       }
 
