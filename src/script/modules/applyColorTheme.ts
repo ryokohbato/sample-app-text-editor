@@ -1,6 +1,6 @@
 export const applyColorTheme = () =>
 {
-  // Call this MANUALLY AFTER dark mode toggled.
+  // Call this MANUALLY AFTER dark mode is toggled.
   const modeChanged = () =>
   {
     if (document.querySelector('html')?.classList.contains('dark'))
