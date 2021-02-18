@@ -7,7 +7,7 @@
   "watch": {
     "build:dev": {
       "patterns": "src",
-      "extensions": "html,css,sass,scss,ts,js"
+      "extensions": "html,css,sass,scss,ts,js,svg"
     }
   },
   "scripts": {
@@ -20,6 +20,7 @@
   "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^10.2.4",
+    "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^5.0.2",
     "gulp": "^4.0.2",
     "gulp-webserver": "^0.9.1",
@@ -32,6 +33,7 @@
     "tailwindcss": "^2.0.3",
     "ts-loader": "^8.0.17",
     "typescript": "^4.1.5",
+    "url-loader": "^4.1.1",
     "webpack": "^5.22.0",
     "webpack-cli": "^4.5.0"
   }

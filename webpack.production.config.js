@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: "production",
@@ -25,6 +26,10 @@ module.exports = {
           'postcss-loader',
         ],
       },
+      {
+        test: /\.(jpg|png|svg)$/,
+        loader: 'url-loader',
+      },
     ],
   },
   plugins: [
@@ -32,6 +37,11 @@ module.exports = {
       filename: 'index.html',
       template: './src/index.html',
     }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'src/img', to: 'img' }
+      ]
+    })
   ],
   resolve: {
     extensions: ['.ts', '.js']
