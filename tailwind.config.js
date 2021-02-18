@@ -17,7 +17,7 @@ module.exports = {
 
       gray: {
         ...colors.trueGray,
-        750: "#333333",
+        750: '#333333',
       }
     }
   },
