@@ -46,7 +46,7 @@ module.exports = {
 
           display: 'grid',
           gridTemplate:
-            '"font-family font-family font-family font-family font-larger font-smaller separator back next" 1fr\
+            '"font-family font-family font-family font-family font-larger font-smaller separator undo redo" 1fr\
             "font-bold font-italic font-underline text-color background-color underline-color separator zoom-in zoom-out" 1fr\
             / 1fr 1fr 1fr 1fr 1fr 1fr 3px 1fr 1fr'
         },
@@ -107,12 +107,12 @@ module.exports = {
           gridArea: 'separator',
         },
 
-        '.r-header_item__back': {
-          gridArea: 'back',
+        '.r-header_item__undo': {
+          gridArea: 'undo',
         },
 
-        '.r-header_item__next': {
-          gridArea: 'next',
+        '.r-header_item__redo': {
+          gridArea: 'redo',
         },
 
         '.r-header_item__zoom-in': {
@@ -140,9 +140,29 @@ module.exports = {
           transform: 'translateX(-50%) translateY(-50%)',
         },
 
+        '.rotate-y-180': {
+          transform: 'rotateY(180deg)',
+        },
+
         '.border-1': {
           borderWidth: '1px',
         },
+
+        '.r-sup': {
+          position: 'relative'
+        },
+
+        '.r-sup-sub__plus': {
+          position: 'absolute',
+          top: '-6px',
+          right: '-6px',
+        },
+
+        '.r-sup-sub__minus': {
+          position: 'absolute',
+          top: '-3px',
+          right: '-3px',
+        }
       }
 
       addUtilities(newUtilities);
@@ -150,6 +170,10 @@ module.exports = {
       const globalUtilities = {
         '[aria-disabled=true]': {
           display: 'none',
+        },
+
+        '.ui-font': {
+          fontFamily: "'Noto Sans', sans-serif",
         },
       }
 

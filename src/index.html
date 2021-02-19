@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>簡易テキストエディタ</title>
     <link rel="shortcut icon" href="img/favicon.svg">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+
   </head>
-  <body class="r-container bg-gray-50 dark:bg-gray-750 dark:text-gray-50 h-full-v">
+  <body class="r-container bg-gray-50 dark:bg-gray-750 dark:text-gray-50 h-full-v ui-font">
     <header class="r-header bg-primary relative">
       <h1 class="text-primary-contrast absolute top-1/2 left-3 transform -translate-y-1/2">簡易テキストエディタ</h1>
       <button id="toggle-dark-mode" class="absolute top-1/2 right-3 transform -translate-y-1/2" role="toggle dark mode">
@@ -27,10 +30,18 @@
         </select>
       </section>
       <section class="r-header_item__font-larger relative">
-        <button class="center-v">+</button>
+        <button class="center-v">
+          <span class="r-sup-plus">A
+            <span class="r-sup-sub__plus">+</span>
+          </span>
+        </button>
       </section>
       <section class="r-header_item__font-smaller relative">
-        <button class="center-v">-</button>
+        <button class="center-v">
+          <span class="r-sup-plus text-sm">A
+            <span class="r-sup-sub__minus">-</span>
+          </span>
+        </button>
       </section>
       <section class="r-header_item__font-bold relative text-base">
         <button class="center-v font-bold">B</button>
@@ -50,7 +61,8 @@
       </section>
       <section class="r-header_item__background-color relative">
         <button class="center-v flex items-center">
-          <span>B</span>
+          <img src="./img/color_fill_black.svg" alt="background color" class="h-4 w-4" only-color-scheme="light" aria-disabled="false">
+          <img src="./img/color_fill_white.svg" alt="background color" class="h-4 w-4" only-color-scheme="dark" aria-disabled="true">
           <img src="./img/expand_black.svg" alt="select color" class="h-4 w-4" only-color-scheme="light" aria-disabled="false">
           <img src="./img/expand_white.svg" alt="select color" class="h-4 w-4" only-color-scheme="dark" aria-disabled="true">
         </button>
@@ -65,10 +77,30 @@
 
       <section class="r-header_item__separator bg-gray-400 my-1 w-0.5"></section>
 
-      <section class="r-header_item__back"></section>
-      <section class="r-header_item__next"></section>
-      <section class="r-header_item__zoom-in"></section>
-      <section class="r-header_item__zoom-out"></section>
+      <section class="r-header_item__undo relative">
+        <button class="center-v">
+          <img src="./img/undo_black.svg" alt="Undo" class="h-6 w-6" only-color-scheme="light" aria-disabled="false">
+          <img src="./img/undo_white.svg" alt="Undo" class="h-6 w-6" only-color-scheme="dark" aria-disabled="true">
+        </button>
+      </section>
+      <section class="r-header_item__redo relative">
+        <button class="center-v">
+          <img src="./img/undo_black.svg" alt="Redo" class="h-6 w-6 rotate-y-180" only-color-scheme="light" aria-disabled="false">
+          <img src="./img/undo_white.svg" alt="Redo" class="h-6 w-6 rotate-y-180" only-color-scheme="dark" aria-disabled="true">
+        </button>
+      </section>
+      <section class="r-header_item__zoom-in relative">
+        <button class="center-v">
+          <img src="./img/zoom_in_black.svg" alt="zoom in" class="h-6 w-6" only-color-scheme="light" aria-disabled="false">
+          <img src="./img/zoom_in_white.svg" alt="zoom in" class="h-6 w-6" only-color-scheme="dark" aria-disabled="true">
+        </button>
+      </section>
+      <section class="r-header_item__zoom-out relative">
+        <button class="center-v">
+          <img src="./img/zoom_out_black.svg" alt="zoom in" class="h-6 w-6" only-color-scheme="light" aria-disabled="false">
+          <img src="./img/zoom_out_white.svg" alt="zoom in" class="h-6 w-6" only-color-scheme="dark" aria-disabled="true">
+        </button>
+      </section>
     </section>
     <main id="editor__wrapper" class="r-main"></main>
     <aside class="r-main_bg__l bg-gray-200 dark:bg-gray-800"></aside>
