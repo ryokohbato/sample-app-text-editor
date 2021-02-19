@@ -7,16 +7,69 @@
     <title>簡易テキストエディタ</title>
     <link rel="shortcut icon" href="img/favicon.svg">
   </head>
-  <body class="r-container bg-gray-50 dark:bg-gray-750 h-full-v">
+  <body class="r-container bg-gray-50 dark:bg-gray-750 dark:text-gray-50 h-full-v">
     <header class="r-header bg-primary relative">
       <h1 class="text-primary-contrast absolute top-1/2 left-3 transform -translate-y-1/2">簡易テキストエディタ</h1>
       <button id="toggle-dark-mode" class="absolute top-1/2 right-3 transform -translate-y-1/2" role="toggle dark mode">
         <img src="./img/dark_mode.svg" alt="dark mode" class="h-6 w-6">
-        <p id="dark-mode-disabled-text" class="text-primary-contrast text-xs mt-0.5" aria-disabled="false">OFF</p>
-        <p id="dark-mode-enabled-text" class="text-primary-contrast text-xs mt-0.5" aria-disabled="true">ON</p>
+        <p class="text-primary-contrast text-xs mt-0.5" only-color-scheme="light" aria-disabled="false">OFF</p>
+        <p class="text-primary-contrast text-xs mt-0.5" only-color-scheme="dark" aria-disabled="true">ON</p>
       </button>
     </header>
-    <section class="r-header_item bg-gray-200 dark:bg-gray-800"></section>
+    <section class="r-header_item bg-gray-200 dark:bg-gray-800">
+      <section class="r-header_item__font-family relative">
+        <select name="font-family-selection" id="font-family-selection"
+          class="center-v px-1.5 py-0.5
+          bg-gray-200 dark:bg-gray-750 text-xs border-gray-400 border-solid border-1">
+          <option value="serif" class="font-serif">serif</option>
+          <option value="sans-serif" class="font-sans">sans serif</option>
+          <option value="monospace" class="font-mono">monospace</option>
+        </select>
+      </section>
+      <section class="r-header_item__font-larger relative">
+        <button class="center-v">+</button>
+      </section>
+      <section class="r-header_item__font-smaller relative">
+        <button class="center-v">-</button>
+      </section>
+      <section class="r-header_item__font-bold relative text-base">
+        <button class="center-v font-bold">B</button>
+      </section>
+      <section class="r-header_item__font-italic relative text-base">
+        <button class="center-v italic">I</button>
+      </section>
+      <section class="r-header_item__font-underline relative text-base">
+        <button class="center-v underline">U</button>
+      </section>
+      <section class="r-header_item__text-color relative">
+        <button class="center-v flex items-center">
+          <span>A</span>
+          <img src="./img/expand_black.svg" alt="select color" class="h-4 w-4" only-color-scheme="light" aria-disabled="false">
+          <img src="./img/expand_white.svg" alt="select color" class="h-4 w-4" only-color-scheme="dark" aria-disabled="true">
+        </button>
+      </section>
+      <section class="r-header_item__background-color relative">
+        <button class="center-v flex items-center">
+          <span>B</span>
+          <img src="./img/expand_black.svg" alt="select color" class="h-4 w-4" only-color-scheme="light" aria-disabled="false">
+          <img src="./img/expand_white.svg" alt="select color" class="h-4 w-4" only-color-scheme="dark" aria-disabled="true">
+        </button>
+      </section>
+      <section class="r-header_item__underline-color relative">
+        <button class="center-v flex items-center">
+          <span>U</span>
+          <img src="./img/expand_black.svg" alt="select color" class="h-4 w-4" only-color-scheme="light" aria-disabled="false">
+          <img src="./img/expand_white.svg" alt="select color" class="h-4 w-4" only-color-scheme="dark" aria-disabled="true">
+        </button>
+      </section>
+
+      <section class="r-header_item__separator bg-gray-400 my-1 w-0.5"></section>
+
+      <section class="r-header_item__back"></section>
+      <section class="r-header_item__next"></section>
+      <section class="r-header_item__zoom-in"></section>
+      <section class="r-header_item__zoom-out"></section>
+    </section>
     <main id="editor__wrapper" class="r-main"></main>
     <aside class="r-main_bg__l bg-gray-200 dark:bg-gray-800"></aside>
     <aside class="r-main_bg__r bg-gray-200 dark:bg-gray-800"></aside>

@@ -34,7 +34,7 @@ module.exports = {
             "header_item header_item header_item" 60px\
             "main_bg__l main main_bg__r" 1fr\
             "footer footer footer" 24px\
-            /30px 1fr 30px',
+            / 30px 1fr 30px',
         },
 
         '.r-header': {
@@ -43,6 +43,12 @@ module.exports = {
 
         '.r-header_item': {
           gridArea: 'header_item',
+
+          display: 'grid',
+          gridTemplate:
+            '"font-family font-family font-family font-family font-larger font-smaller separator back next" 1fr\
+            "font-bold font-italic font-underline text-color background-color underline-color separator zoom-in zoom-out" 1fr\
+            / 1fr 1fr 1fr 1fr 1fr 1fr 3px 1fr 1fr'
         },
 
         '.r-main': {
@@ -60,6 +66,62 @@ module.exports = {
         '.r-main_bg__r': {
           gridArea: 'main_bg__r',
         },
+
+        '.r-header_item__font-family': {
+          gridArea: 'font-family',
+        },
+
+        '.r-header_item__font-larger': {
+          gridArea: 'font-larger',
+        },
+
+        '.r-header_item__font-smaller': {
+          gridArea: 'font-smaller',
+        },
+
+        '.r-header_item__font-bold': {
+          gridArea: 'font-bold',
+        },
+
+        '.r-header_item__font-italic': {
+          gridArea: 'font-italic',
+        },
+
+        '.r-header_item__font-underline': {
+          gridArea: 'font-underline',
+        },
+
+        '.r-header_item__text-color': {
+          gridArea: 'text-color',
+        },
+
+        '.r-header_item__background-color': {
+          gridArea: 'background-color',
+        },
+
+        '.r-header_item__underline-color': {
+          gridArea: 'underline-color',
+        },
+
+        '.r-header_item__separator': {
+          gridArea: 'separator',
+        },
+
+        '.r-header_item__back': {
+          gridArea: 'back',
+        },
+
+        '.r-header_item__next': {
+          gridArea: 'next',
+        },
+
+        '.r-header_item__zoom-in': {
+          gridArea: 'zoom-in',
+        },
+
+        '.r-header_item__zoom-out': {
+          gridArea: 'zoom-out',
+        },
       }
 
       addComponents(rawStyle)
@@ -71,12 +133,27 @@ module.exports = {
           height: '100vh',
         },
 
+        '.center-v': {
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translateX(-50%) translateY(-50%)',
+        },
+
+        '.border-1': {
+          borderWidth: '1px',
+        },
+      }
+
+      addUtilities(newUtilities);
+
+      const globalUtilities = {
         '[aria-disabled=true]': {
           display: 'none',
         },
       }
 
-      addUtilities(newUtilities);
+      addUtilities(globalUtilities);
     })
   ],
 }

@@ -2,11 +2,11 @@ export const applyColorTheme = (): void => {
   // Call this MANUALLY AFTER dark mode is toggled.
   const modeChanged = () => {
     if (document.querySelector('html')?.classList.contains('dark')) {
-      document.getElementById('dark-mode-disabled-text')?.setAttribute('aria-disabled', 'true');
-      document.getElementById('dark-mode-enabled-text')?.setAttribute('aria-disabled', 'false');
+      document.querySelectorAll('[only-color-scheme="light"]').forEach((x) => x.setAttribute('aria-disabled', 'true'));
+      document.querySelectorAll('[only-color-scheme="dark"]').forEach((x) => x.setAttribute('aria-disabled', 'false'));
     } else {
-      document.getElementById('dark-mode-disabled-text')?.setAttribute('aria-disabled', 'false');
-      document.getElementById('dark-mode-enabled-text')?.setAttribute('aria-disabled', 'true');
+      document.querySelectorAll('[only-color-scheme="light"]').forEach((x) => x.setAttribute('aria-disabled', 'false'));
+      document.querySelectorAll('[only-color-scheme="dark"]').forEach((x) => x.setAttribute('aria-disabled', 'true'));
     }
   };
 
