@@ -133,7 +133,7 @@ module.exports = {
           height: '100vh',
         },
 
-        '.center-v': {
+        '.center-a': {
           position: 'absolute',
           top: '50%',
           left: '50%',
@@ -147,22 +147,6 @@ module.exports = {
         '.border-1': {
           borderWidth: '1px',
         },
-
-        '.r-sup': {
-          position: 'relative'
-        },
-
-        '.r-sup-sub__plus': {
-          position: 'absolute',
-          top: '-6px',
-          right: '-6px',
-        },
-
-        '.r-sup-sub__minus': {
-          position: 'absolute',
-          top: '-3px',
-          right: '-3px',
-        }
       }
 
       addUtilities(newUtilities);

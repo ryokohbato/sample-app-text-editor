@@ -22,85 +22,110 @@
     <section class="r-header_item bg-gray-200 dark:bg-gray-800">
       <section class="r-header_item__font-family relative">
         <select name="font-family-selection" id="font-family-selection"
-          class="center-v px-1.5 py-0.5
+          class="center-a px-1.5 py-0.5
           bg-gray-200 dark:bg-gray-750 text-xs border-gray-400 border-solid border-1">
           <option value="serif" class="font-serif">serif</option>
           <option value="sans-serif" class="font-sans">sans serif</option>
           <option value="monospace" class="font-mono">monospace</option>
         </select>
       </section>
-      <section class="r-header_item__font-larger relative">
-        <button class="center-v">
-          <span class="r-sup-plus">A
-            <span class="r-sup-sub__plus">+</span>
+      <section class="r-header_item__font-larger">
+        <button class="h-full w-full">
+          <span class="relative">A
+            <span class="absolute top-0 left-1/2 transform translate-x-1 -translate-y-2">+</span>
           </span>
         </button>
       </section>
-      <section class="r-header_item__font-smaller relative">
-        <button class="center-v">
-          <span class="r-sup-plus text-sm">A
-            <span class="r-sup-sub__minus">-</span>
+      <section class="r-header_item__font-smaller">
+        <button class="h-full w-full">
+          <span class="relative text-sm">A
+            <span class="absolute top-0 left-1/2 transform translate-x-1 -translate-y-1.5">-</span>
           </span>
         </button>
       </section>
-      <section class="r-header_item__font-bold relative text-base">
-        <button class="center-v font-bold">B</button>
+      <section class="r-header_item__font-bold text-base">
+        <button class="font-bold h-full w-full">B</button>
       </section>
-      <section class="r-header_item__font-italic relative text-base">
-        <button class="center-v italic">I</button>
+      <section class="r-header_item__font-italic text-base">
+        <button class="italic h-full w-full">I</button>
       </section>
-      <section class="r-header_item__font-underline relative text-base">
-        <button class="center-v underline">U</button>
+      <section class="r-header_item__font-underline text-base">
+        <button class="underline h-full w-full">U</button>
       </section>
-      <section class="r-header_item__text-color relative">
-        <button class="center-v flex items-center">
-          <span>A</span>
-          <img src="./img/expand_black.svg" alt="select color" class="h-4 w-4" only-color-scheme="light" aria-disabled="false">
-          <img src="./img/expand_white.svg" alt="select color" class="h-4 w-4" only-color-scheme="dark" aria-disabled="true">
+      <section class="r-header_item__text-color">
+        <button class="h-full w-full">
+          <label for="text-color__color-selection" class="inline-block h-full w-full relative">
+            <span class="mx-auto center-a inline-block w-full">
+              A
+              <img src="./img/expand_black.svg" alt="select color" class="h-4 w-4 absolute top-1/2 right-0
+                transform -translate-x-0.5 -translate-y-1/2" only-color-scheme="light" aria-disabled="false">
+              <img src="./img/expand_white.svg" alt="select color" class="h-4 w-4 absolute top-1/2 right-0
+                transform -translate-x-0.5 -translate-y-1/2" only-color-scheme="dark" aria-disabled="true">
+            </span>
+          </label>
+
+          <input type="color" name="text-color__color-selection" id="text-color__color-selection" aria-disabled="true">
         </button>
       </section>
-      <section class="r-header_item__background-color relative">
-        <button class="center-v flex items-center">
-          <img src="./img/color_fill_black.svg" alt="background color" class="h-4 w-4" only-color-scheme="light" aria-disabled="false">
-          <img src="./img/color_fill_white.svg" alt="background color" class="h-4 w-4" only-color-scheme="dark" aria-disabled="true">
-          <img src="./img/expand_black.svg" alt="select color" class="h-4 w-4" only-color-scheme="light" aria-disabled="false">
-          <img src="./img/expand_white.svg" alt="select color" class="h-4 w-4" only-color-scheme="dark" aria-disabled="true">
+      <section class="r-header_item__background-color">
+        <button class="h-full w-full">
+          <label for="background-color__color-selection" class="inline-block h-full w-full relative">
+            <span class="mx-auto relative center-a inline-block h-full w-full">
+              <img src="./img/color_fill_black.svg" alt="background color" class="h-4 w-4 mx-auto center-a" only-color-scheme="light" aria-disabled="false">
+              <img src="./img/color_fill_white.svg" alt="background color" class="h-4 w-4 mx-auto center-a" only-color-scheme="dark" aria-disabled="true">
+              <img src="./img/expand_black.svg" alt="select color" class="h-4 w-4 absolute top-1/2 right-0
+                transform -translate-x-0.5 -translate-y-1/2" only-color-scheme="light" aria-disabled="false">
+              <img src="./img/expand_white.svg" alt="select color" class="h-4 w-4 absolute top-1/2 right-0
+                transform -translate-x-0.5 -translate-y-1/2" only-color-scheme="dark" aria-disabled="true">
+            </span>
+          </label>
+
+          <input type="color" name="background-color__color-selection" id="background-color__color-selection" aria-disabled="true">
         </button>
       </section>
       <section class="r-header_item__underline-color relative">
-        <button class="center-v flex items-center">
-          <span>U</span>
-          <img src="./img/expand_black.svg" alt="select color" class="h-4 w-4" only-color-scheme="light" aria-disabled="false">
-          <img src="./img/expand_white.svg" alt="select color" class="h-4 w-4" only-color-scheme="dark" aria-disabled="true">
+        <button class="h-full w-full">
+          <label for="underline-color__color-selection" class="inline-block h-full w-full relative">
+            <span class="mx-auto relative center-a inline-block w-full">
+              U
+              <img src="./img/expand_black.svg" alt="select color" class="h-4 w-4 absolute top-1/2 right-0
+                transform -translate-x-0.5 -translate-y-1/2" only-color-scheme="light" aria-disabled="false">
+              <img src="./img/expand_white.svg" alt="select color" class="h-4 w-4 absolute top-1/2 right-0
+                transform -translate-x-0.5 -translate-y-1/2" only-color-scheme="dark" aria-disabled="true">
+            </span>
+          </label>
+
+          <input type="color" name="underline-color__color-selection" id="underline-color__color-selection" aria-disabled="true">
         </button>
       </section>
 
       <section class="r-header_item__separator bg-gray-400 my-1 w-0.5"></section>
 
-      <section class="r-header_item__undo relative">
-        <button class="center-v">
-          <img src="./img/undo_black.svg" alt="Undo" class="h-6 w-6" only-color-scheme="light" aria-disabled="false">
-          <img src="./img/undo_white.svg" alt="Undo" class="h-6 w-6" only-color-scheme="dark" aria-disabled="true">
+      <section class="r-header_item__undo">
+        <button class="h-full w-full">
+          <img src="./img/undo_black.svg" alt="Undo" class="h-6 w-6 mx-auto" only-color-scheme="light" aria-disabled="false">
+          <img src="./img/undo_white.svg" alt="Undo" class="h-6 w-6 mx-auto" only-color-scheme="dark" aria-disabled="true">
         </button>
       </section>
-      <section class="r-header_item__redo relative">
-        <button class="center-v">
-          <img src="./img/undo_black.svg" alt="Redo" class="h-6 w-6 rotate-y-180" only-color-scheme="light" aria-disabled="false">
-          <img src="./img/undo_white.svg" alt="Redo" class="h-6 w-6 rotate-y-180" only-color-scheme="dark" aria-disabled="true">
+      <section class="r-header_item__redo">
+        <button class="h-full w-full">
+          <img src="./img/undo_black.svg" alt="Redo" class="h-6 w-6 rotate-y-180 mx-auto" only-color-scheme="light" aria-disabled="false">
+          <img src="./img/undo_white.svg" alt="Redo" class="h-6 w-6 rotate-y-180 mx-auto" only-color-scheme="dark" aria-disabled="true">
         </button>
       </section>
-      <section class="r-header_item__zoom-in relative">
-        <button class="center-v">
-          <img src="./img/zoom_in_black.svg" alt="zoom in" class="h-6 w-6" only-color-scheme="light" aria-disabled="false">
-          <img src="./img/zoom_in_white.svg" alt="zoom in" class="h-6 w-6" only-color-scheme="dark" aria-disabled="true">
+      <section class="r-header_item__zoom-in">
+        <button class="h-full w-full">
+          <img src="./img/zoom_in_black.svg" alt="zoom in" class="h-6 w-6 mx-auto" only-color-scheme="light" aria-disabled="false">
+          <img src="./img/zoom_in_white.svg" alt="zoom in" class="h-6 w-6 mx-auto" only-color-scheme="dark" aria-disabled="true">
         </button>
       </section>
-      <section class="r-header_item__zoom-out relative">
-        <button class="center-v">
-          <img src="./img/zoom_out_black.svg" alt="zoom in" class="h-6 w-6" only-color-scheme="light" aria-disabled="false">
-          <img src="./img/zoom_out_white.svg" alt="zoom in" class="h-6 w-6" only-color-scheme="dark" aria-disabled="true">
+      <section class="r-header_item__zoom-out">
+        <button class="h-full w-full">
+          <img src="./img/zoom_out_black.svg" alt="zoom in" class="h-6 w-6 mx-auto" only-color-scheme="light" aria-disabled="false">
+          <img src="./img/zoom_out_white.svg" alt="zoom in" class="h-6 w-6 mx-auto" only-color-scheme="dark" aria-disabled="true">
         </button>
       </section>
+
     </section>
     <main id="editor__wrapper" class="r-main"></main>
     <aside class="r-main_bg__l bg-gray-200 dark:bg-gray-800"></aside>
