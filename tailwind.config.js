@@ -46,7 +46,7 @@ module.exports = {
 
           display: 'grid',
           gridTemplate:
-            '"font-family font-family font-family font-family font-larger font-smaller separator undo redo" 1fr\
+            '"font-family font-family font-family font-size-input font-larger font-smaller separator undo redo" 1fr\
             "font-bold font-italic font-underline text-color background-color underline-color separator zoom-in zoom-out" 1fr\
             / 1fr 1fr 1fr 1fr 1fr 1fr 3px 1fr 1fr'
         },
@@ -69,6 +69,10 @@ module.exports = {
 
         '.r-header_item__font-family': {
           gridArea: 'font-family',
+        },
+
+        '.r-header_item__font-size-input': {
+          gridArea: 'font-size-input',
         },
 
         '.r-header_item__font-larger': {
@@ -146,6 +150,14 @@ module.exports = {
 
         '.border-1': {
           borderWidth: '1px',
+        },
+
+        '.h-6.5': {
+          height: '26px',
+        },
+
+        '.leading-7.5': {
+          lineHeight: '30px',
         },
       }
 

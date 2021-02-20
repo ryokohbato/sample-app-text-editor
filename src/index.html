@@ -22,12 +22,17 @@
     <section class="r-header_item bg-gray-200 dark:bg-gray-800">
       <section class="r-header_item__font-family relative">
         <select name="font-family-selection" id="font-family-selection"
-          class="center-a px-1.5 py-0.5
+          class="center-a px-1.5 py-0.5 h-6.5
           bg-gray-200 dark:bg-gray-750 text-xs border-gray-400 border-solid border-1">
           <option value="serif" class="font-serif">serif</option>
           <option value="sans-serif" class="font-sans">sans serif</option>
           <option value="monospace" class="font-mono">monospace</option>
         </select>
+      </section>
+      <section class="r-header_item__font-size-input flex text-xs">
+        <input type="number" id="font-size-input" class="h-6.5 w-full my-0.5 mr-0.5 text-center
+          bg-gray-200 dark:bg-gray-750 border-gray-400 border-solid border-1">
+        <p class="leading-7">px</p>
       </section>
       <section class="r-header_item__font-larger">
         <button class="h-full w-full">
