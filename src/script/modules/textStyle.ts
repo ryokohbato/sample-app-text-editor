@@ -82,10 +82,15 @@ export const editorTextStyle = () => {
   });
 
   document.getElementById('font-size-input')?.addEventListener('change', () => {
-    fontSizeChanged(
-      ((<HTMLInputElement>document.getElementById('font-size-input')).value as unknown) as number,
-      presentTextStyle
-    );
+    fontSizeChanged(Number((<HTMLInputElement>document.getElementById('font-size-input')).value), presentTextStyle);
+  });
+
+  document.getElementById('font-size-larger')?.addEventListener('click', () => {
+    fontSizeChanged(presentTextStyle.fontSize + 1, presentTextStyle);
+  });
+
+  document.getElementById('font-size-smaller')?.addEventListener('click', () => {
+    fontSizeChanged(presentTextStyle.fontSize - 1, presentTextStyle);
   });
 
   document.getElementById('is-text-bold-selection')?.addEventListener('click', () => {
