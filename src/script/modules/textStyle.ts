@@ -71,6 +71,8 @@ export const editorTextStyle = () => {
   fontFamilyChanged(presentTextStyle.fontFamily, presentTextStyle);
   fontSizeChanged(presentTextStyle.fontSize, presentTextStyle);
   isTextBoldChanged(presentTextStyle.isTextBold, presentTextStyle);
+  isTextItalicChanged(presentTextStyle.isTextItalic, presentTextStyle);
+  isTextUnderlinedChanged(presentTextStyle.isTextUnderlined, presentTextStyle);
 
   document.getElementById('font-family-selection')?.addEventListener('change', () => {
     fontFamilyChanged(
