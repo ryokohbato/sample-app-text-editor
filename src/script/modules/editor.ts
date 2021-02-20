@@ -1,3 +1,5 @@
+import { editorTextStyle } from './textStyle';
+
 export const editor = (): void => {
   // Inject canvas element: The size will be the same as the main element.
   const editorWrapper = document.getElementById('editor__wrapper');
@@ -12,4 +14,6 @@ export const editor = (): void => {
   const editor_ctx = editor.getContext('2d');
 
   if (editor_ctx === null) return;
+
+  editorTextStyle();
 };

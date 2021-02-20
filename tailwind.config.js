@@ -164,8 +164,16 @@ module.exports = {
       addUtilities(newUtilities);
 
       const globalUtilities = {
-        '[aria-disabled=true]': {
+        '[aria-disabled="true"]': {
           display: 'none',
+        },
+
+        ':not(.dark) [aria-selected="true"]': {
+          backgroundColor: '#00000033',
+        },
+
+        '.dark [aria-selected="true"]': {
+          backgroundColor: '#ffffff33',
         },
 
         '.ui-font': {
