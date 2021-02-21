@@ -1,13 +1,7 @@
 import { TextStyle, BackgroundLayer } from "../src/script/modules/textStyle";
 
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
-const fs = require('fs').promises;
-
 describe("Text Style", () => {
   let TestTextStyle: TextStyle;
-  let dom: any;
-  let document;
 
   beforeAll(async () => {
     TestTextStyle = {
@@ -32,10 +26,6 @@ describe("Text Style", () => {
         blue: 255,
       },
     };
-
-    const domData = await fs.readFile("src/index.html");
-    dom = new JSDOM(domData);
-    document = dom.window.document;
   })
 
   it("Change font family", () => {
