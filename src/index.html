@@ -49,18 +49,18 @@
         </button>
       </section>
       <section class="r-header_item__font-bold text-base">
-        <button id="is-text-bold-selection" class="font-bold h-full w-full" aria-selected="false">B</button>
+        <button id="is-text-bold-selection" class="font-bold h-full w-full rounded" aria-selected="false">B</button>
       </section>
       <section class="r-header_item__font-italic text-base">
-        <button id="is-text-italic-selection" class="italic h-full w-full" aria-selected="false">I</button>
+        <button id="is-text-italic-selection" class="italic h-full w-full rounded" aria-selected="false">I</button>
       </section>
       <section class="r-header_item__font-underline text-base">
-        <button id="is-text-underlined-selection" class="underline h-full w-full" aria-selected="false">U</button>
+        <button id="is-text-underlined-selection" class="underline h-full w-full rounded" aria-selected="false">U</button>
       </section>
       <section class="r-header_item__text-color">
-        <button class="h-full w-full">
+        <button id="text-color" class="h-full w-full">
           <label for="text-color__color-selection" class="inline-block h-full w-full relative">
-            <span class="mx-auto center-a inline-block w-full">
+            <span class="font-bold mx-auto center-a inline-block w-full">
               A
               <img src="./img/expand_black.svg" alt="select color" class="h-4 w-4 absolute top-1/2 right-0
                 transform -translate-x-0.5 -translate-y-1/2" only-color-scheme="light" aria-disabled="false">
@@ -72,7 +72,9 @@
           <input type="color" name="text-color__color-selection" id="text-color__color-selection" aria-disabled="true">
         </button>
       </section>
-      <section class="r-header_item__background-color">
+      <section class="r-header_item__background-color relative">
+        <span id="background-color" class="absolute top-0 left-0 inline-block w-full h-full bg-red-600 rounded"></span>
+
         <button class="h-full w-full">
           <label for="background-color__color-selection" class="inline-block h-full w-full relative">
             <span class="mx-auto relative center-a inline-block h-full w-full">
@@ -89,6 +91,8 @@
         </button>
       </section>
       <section class="r-header_item__underline-color relative">
+        <span id="underline-color" class="absolute bottom-0 left-0 inline-block w-full h-1/2 bg-red-600 rounded"></span>
+
         <button class="h-full w-full">
           <label for="underline-color__color-selection" class="inline-block h-full w-full relative">
             <span class="mx-auto relative center-a inline-block w-full">

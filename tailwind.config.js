@@ -10,6 +10,8 @@ module.exports = {
   theme: {
     extend: {},
     colors: {
+      ...colors,
+
       primary: {
         DEFAULT: '#2c579b',
         contrast: '#ffffff',
@@ -46,9 +48,9 @@ module.exports = {
 
           display: 'grid',
           gridTemplate:
-            '"font-family font-family font-family font-size-input font-larger font-smaller separator undo redo" 1fr\
-            "font-bold font-italic font-underline text-color background-color underline-color separator zoom-in zoom-out" 1fr\
-            / 1fr 1fr 1fr 1fr 1fr 1fr 3px 1fr 1fr'
+            '"font-family font-family font-family font-family font-family . font-size-input . font-larger . font-smaller . separator . undo . redo" 1fr\
+            "font-bold . font-italic . font-underline . text-color . background-color . underline-color . separator . zoom-in . zoom-out" 1fr\
+            / 1fr 2px 1fr 2px 1fr 2px 1fr 2px 1fr 2px 1fr 2px 3px 2px 1fr 2px 1fr',
         },
 
         '.r-main': {
