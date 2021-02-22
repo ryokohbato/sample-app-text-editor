@@ -4,6 +4,25 @@ interface RGBColor {
   blue: number;
 }
 
+export class RGBColorConverter {
+  static ToString(color: RGBColor): string {
+    return (
+      '#' +
+      color.red.toString(16).padStart(2, '0') +
+      color.green.toString(16).padStart(2, '0') +
+      color.blue.toString(16).padStart(2, '0')
+    );
+  }
+
+  static ToRGBColor(color: string): RGBColor {
+    return {
+      red: parseInt(color.substr(1, 2), 16),
+      green: parseInt(color.substr(3, 2), 16),
+      blue: parseInt(color.substr(5, 2), 16),
+    };
+  }
+}
+
 type TextStyleFontFamilies = 'serif' | 'sans-serif' | 'monospace';
 
 export interface TextStyle {
@@ -42,6 +61,21 @@ const isTextUnderlinedChanged = (newValue: boolean, textStyle: TextStyle): void 
   BackgroundLayer.IsTextUnderlinedChanged(newValue, textStyle);
 };
 
+const textColorChanged = (newColor: string, textStyle: TextStyle): void => {
+  UILayer.TextColorChanged(newColor);
+  BackgroundLayer.TextColorChanged(newColor, textStyle);
+};
+
+const backgroundColorChanged = (newColor: string, textStyle: TextStyle): void => {
+  UILayer.BackgroundColorChanged(newColor);
+  BackgroundLayer.BackgroundColorChanged(newColor, textStyle);
+};
+
+const underlineColorChanged = (newColor: string, textStyle: TextStyle): void => {
+  UILayer.UnderlineColorChanged(newColor);
+  BackgroundLayer.UnderlineColorChanged(newColor, textStyle);
+};
+
 export const editorTextStyle = () => {
   // The default text style.
   const presentTextStyle: TextStyle = {
@@ -73,6 +107,9 @@ export const editorTextStyle = () => {
   isTextBoldChanged(presentTextStyle.isTextBold, presentTextStyle);
   isTextItalicChanged(presentTextStyle.isTextItalic, presentTextStyle);
   isTextUnderlinedChanged(presentTextStyle.isTextUnderlined, presentTextStyle);
+  textColorChanged(RGBColorConverter.ToString(presentTextStyle.textColor), presentTextStyle);
+  backgroundColorChanged(RGBColorConverter.ToString(presentTextStyle.backgroundColor), presentTextStyle);
+  underlineColorChanged(RGBColorConverter.ToString(presentTextStyle.underlineColor), presentTextStyle);
 
   document.getElementById('font-family-selection')?.addEventListener('change', () => {
     fontFamilyChanged(
@@ -104,6 +141,27 @@ export const editorTextStyle = () => {
   document.getElementById('is-text-underlined-selection')?.addEventListener('click', () => {
     isTextUnderlinedChanged(!presentTextStyle.isTextUnderlined, presentTextStyle);
   });
+
+  document.getElementById('text-color__color-selection')?.addEventListener('change', () => {
+    textColorChanged(
+      (<HTMLInputElement>document.getElementById('text-color__color-selection')).value,
+      presentTextStyle
+    );
+  });
+
+  document.getElementById('background-color__color-selection')?.addEventListener('change', () => {
+    backgroundColorChanged(
+      (<HTMLInputElement>document.getElementById('background-color__color-selection')).value,
+      presentTextStyle
+    );
+  });
+
+  document.getElementById('underline-color__color-selection')?.addEventListener('change', () => {
+    underlineColorChanged(
+      (<HTMLInputElement>document.getElementById('underline-color__color-selection')).value,
+      presentTextStyle
+    );
+  });
 };
 
 class UILayer {
@@ -126,6 +184,18 @@ class UILayer {
   static IsTextUnderlinedChanged(newValue: boolean): void {
     document.getElementById('is-text-underlined-selection')?.setAttribute('aria-selected', String(newValue));
   }
+
+  static TextColorChanged(newColor: string): void {
+    document.getElementById('text-color')!.style.color = newColor;
+  }
+
+  static BackgroundColorChanged(newColor: string): void {
+    document.getElementById('background-color')!.style.backgroundColor = newColor;
+  }
+
+  static UnderlineColorChanged(newColor: string): void {
+    document.getElementById('underline-color')!.style.backgroundColor = newColor;
+  }
 }
 
 export class BackgroundLayer {
@@ -147,5 +217,17 @@ export class BackgroundLayer {
 
   static IsTextUnderlinedChanged(newValue: boolean, textStyle: TextStyle): void {
     textStyle.isTextUnderlined = newValue;
+  }
+
+  static TextColorChanged(newColor: string, textStyle: TextStyle): void {
+    textStyle.textColor = RGBColorConverter.ToRGBColor(newColor);
+  }
+
+  static BackgroundColorChanged(newColor: string, textStyle: TextStyle): void {
+    textStyle.backgroundColor = RGBColorConverter.ToRGBColor(newColor);
+  }
+
+  static UnderlineColorChanged(newColor: string, textStyle: TextStyle): void {
+    textStyle.underlineColor = RGBColorConverter.ToRGBColor(newColor);
   }
 }
