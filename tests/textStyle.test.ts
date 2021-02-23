@@ -1,4 +1,5 @@
 import { TextStyle, BackgroundLayer } from "../src/script/modules/textStyle";
+import { RGBColorConverter } from "../src/script/modules/textStyle";
 
 describe("Text Style", () => {
   let TestTextStyle: TextStyle;
@@ -75,6 +76,24 @@ describe("Text Style", () => {
     expect(targetStyle).toStrictEqual({
       ...beforeStyle,
       isTextUnderlined: true,
+    })
+  })
+})
+
+describe("Converter", () => {
+  it("ToString", () => {
+    expect(RGBColorConverter.ToString({
+      red: 255,
+      green: 0,
+      blue: 31,
+    })).toBe('#ff001f')
+  })
+
+  it("ToRGBColor", () => {
+    expect(RGBColorConverter.ToRGBColor('#ff001f')).toStrictEqual({
+      red: 255,
+      green: 0,
+      blue: 31,
     })
   })
 })
