@@ -78,6 +78,48 @@ describe("Text Style", () => {
       isTextUnderlined: true,
     })
   })
+
+  it("Change text color", () => {
+    const beforeStyle = TestTextStyle;
+    let targetStyle = TestTextStyle;
+    BackgroundLayer.TextColorChanged('#2e03f5', targetStyle)
+    expect(targetStyle).toStrictEqual({
+      ...beforeStyle,
+      textColor: {
+        red: 46,
+        green: 3,
+        blue: 245,
+      }
+    })
+  })
+
+  it("Change background color", () => {
+    const beforeStyle = TestTextStyle;
+    let targetStyle = TestTextStyle;
+    BackgroundLayer.BackgroundColorChanged('#2e03f5', targetStyle)
+    expect(targetStyle).toStrictEqual({
+      ...beforeStyle,
+      backgroundColor: {
+        red: 46,
+        green: 3,
+        blue: 245,
+      }
+    })
+  })
+
+    it("Change underline color", () => {
+    const beforeStyle = TestTextStyle;
+    let targetStyle = TestTextStyle;
+    BackgroundLayer.UnderlineColorChanged('#2e03f5', targetStyle)
+    expect(targetStyle).toStrictEqual({
+      ...beforeStyle,
+      underlineColor: {
+        red: 46,
+        green: 3,
+        blue: 245,
+      }
+    })
+  })
 })
 
 describe("Converter", () => {
