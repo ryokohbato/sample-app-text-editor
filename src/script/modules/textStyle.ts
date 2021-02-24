@@ -118,8 +118,8 @@ export const editorTextStyle = () => {
   textColorChanged(RGBColorConverter.ToString(presentTextStyle.textColor), presentTextStyle);
   backgroundColorChanged(RGBColorConverter.ToString(presentTextStyle.backgroundColor), presentTextStyle);
   underlineColorChanged(RGBColorConverter.ToString(presentTextStyle.underlineColor), presentTextStyle);
-  // Detect changing of each value.
 
+  // Detect changing of each value.
   document.getElementById('font-family-selection')?.addEventListener('change', () => {
     fontFamilyChanged(
       (<HTMLInputElement>document.getElementById('font-family-selection')).value as TextStyleFontFamilies,
@@ -172,8 +172,8 @@ export const editorTextStyle = () => {
     );
   });
 };
-// Every method in this class should be related to DOM operation.
 
+// Every method in this class should be related to DOM operation.
 class UILayer {
   static FontFamilyChanged(newFontFamily: TextStyleFontFamilies) {
     (<HTMLInputElement>document.getElementById('font-family-selection')).value = newFontFamily;
@@ -207,8 +207,8 @@ class UILayer {
     document.getElementById('underline-color')!.style.backgroundColor = newColor;
   }
 }
-// Every method in this class should NOT be related to DOM operation.
 
+// Every method in this class should NOT be related to DOM operation.
 export class BackgroundLayer {
   static FontFamilyChanged(newFontFamily: TextStyleFontFamilies, textStyle: TextStyle) {
     textStyle.fontFamily = newFontFamily;
