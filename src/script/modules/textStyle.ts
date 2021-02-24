@@ -5,6 +5,8 @@ interface RGBColor {
 }
 
 export class RGBColorConverter {
+  // Convert RGB style object (ex. {red: 100, green: 150, blue: 200}) into string (ex. #1177cc)
+  // The length of the string will be 6. Every color part will be expressed by 2 characters even if it is smaller than 10 (ex. #000102)
   static ToString(color: RGBColor): string {
     return (
       '#' +
@@ -14,6 +16,8 @@ export class RGBColorConverter {
     );
   }
 
+  // Convert string into RGB style object.
+  // The length of the string should be 7. (includes first '#')
   static ToRGBColor(color: string): RGBColor {
     if (color.length === 7)
       return {
@@ -38,6 +42,7 @@ export interface TextStyle {
   backgroundColor: RGBColor;
   underlineColor: RGBColor;
 }
+// It will be called manually when each value is changed.
 
 const fontFamilyChanged = (newFontFamily: TextStyleFontFamilies, textStyle: TextStyle) => {
   UILayer.FontFamilyChanged(newFontFamily);
@@ -113,6 +118,7 @@ export const editorTextStyle = () => {
   textColorChanged(RGBColorConverter.ToString(presentTextStyle.textColor), presentTextStyle);
   backgroundColorChanged(RGBColorConverter.ToString(presentTextStyle.backgroundColor), presentTextStyle);
   underlineColorChanged(RGBColorConverter.ToString(presentTextStyle.underlineColor), presentTextStyle);
+  // Detect changing of each value.
 
   document.getElementById('font-family-selection')?.addEventListener('change', () => {
     fontFamilyChanged(
@@ -166,6 +172,7 @@ export const editorTextStyle = () => {
     );
   });
 };
+// Every method in this class should be related to DOM operation.
 
 class UILayer {
   static FontFamilyChanged(newFontFamily: TextStyleFontFamilies) {
@@ -200,6 +207,7 @@ class UILayer {
     document.getElementById('underline-color')!.style.backgroundColor = newColor;
   }
 }
+// Every method in this class should NOT be related to DOM operation.
 
 export class BackgroundLayer {
   static FontFamilyChanged(newFontFamily: TextStyleFontFamilies, textStyle: TextStyle) {
