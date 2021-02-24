@@ -138,4 +138,10 @@ describe("Converter", () => {
       blue: 31,
     })
   })
+
+  it("ToRGBColor - throw", () => {
+    expect(() => {
+      RGBColorConverter.ToRGBColor('#ff01f');
+    }).toThrow(Error);
+  })
 })

@@ -15,11 +15,14 @@ export class RGBColorConverter {
   }
 
   static ToRGBColor(color: string): RGBColor {
-    return {
-      red: parseInt(color.substr(1, 2), 16),
-      green: parseInt(color.substr(3, 2), 16),
-      blue: parseInt(color.substr(5, 2), 16),
-    };
+    if (color.length === 7)
+      return {
+        red: parseInt(color.substr(1, 2), 16),
+        green: parseInt(color.substr(3, 2), 16),
+        blue: parseInt(color.substr(5, 2), 16),
+      };
+
+    throw new Error(`The length of "${color}" should be 7.`);
   }
 }
 
