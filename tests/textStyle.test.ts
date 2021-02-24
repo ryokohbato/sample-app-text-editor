@@ -107,7 +107,7 @@ describe("Text Style", () => {
     })
   })
 
-    it("Change underline color", () => {
+  it("Change underline color", () => {
     const beforeStyle = TestTextStyle;
     let targetStyle = TestTextStyle;
     BackgroundLayer.UnderlineColorChanged('#2e03f5', targetStyle)
