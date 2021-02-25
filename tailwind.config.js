@@ -161,6 +161,14 @@ module.exports = {
         '.leading-7.5': {
           lineHeight: '30px',
         },
+
+        '.filter-shadow__dark': {
+          filter: 'drop-shadow(0 0 1px #333333)',
+        },
+
+        '.filter-shadow__light': {
+          filter: 'drop-shadow(0 0 1px #dddddd)',
+        },
       }
 
       addUtilities(newUtilities);
