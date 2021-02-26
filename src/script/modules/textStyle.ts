@@ -42,51 +42,10 @@ export interface TextStyle {
   backgroundColor: RGBColor;
   underlineColor: RGBColor;
 }
-// It will be called manually when each value is changed.
 
-const fontFamilyChanged = (newFontFamily: TextStyleFontFamilies, textStyle: TextStyle) => {
-  UILayer.FontFamilyChanged(newFontFamily);
-  BackgroundLayer.FontFamilyChanged(newFontFamily, textStyle);
-};
-
-const fontSizeChanged = (newSize: number, textStyle: TextStyle): void => {
-  UILayer.FontSizeChanged(newSize);
-  BackgroundLayer.FontSizeChanged(newSize, textStyle);
-};
-
-const isTextBoldChanged = (newValue: boolean, textStyle: TextStyle): void => {
-  UILayer.IsTextBoldChanged(newValue);
-  BackgroundLayer.IsTextBoldChanged(newValue, textStyle);
-};
-
-const isTextItalicChanged = (newValue: boolean, textStyle: TextStyle): void => {
-  UILayer.IsTextItalicChanged(newValue);
-  BackgroundLayer.IsTextItalicChanged(newValue, textStyle);
-};
-
-const isTextUnderlinedChanged = (newValue: boolean, textStyle: TextStyle): void => {
-  UILayer.IsTextUnderlinedChanged(newValue);
-  BackgroundLayer.IsTextUnderlinedChanged(newValue, textStyle);
-};
-
-const textColorChanged = (newColor: string, textStyle: TextStyle): void => {
-  UILayer.TextColorChanged(newColor);
-  BackgroundLayer.TextColorChanged(newColor, textStyle);
-};
-
-const backgroundColorChanged = (newColor: string, textStyle: TextStyle): void => {
-  UILayer.BackgroundColorChanged(newColor);
-  BackgroundLayer.BackgroundColorChanged(newColor, textStyle);
-};
-
-const underlineColorChanged = (newColor: string, textStyle: TextStyle): void => {
-  UILayer.UnderlineColorChanged(newColor);
-  BackgroundLayer.UnderlineColorChanged(newColor, textStyle);
-};
-
-export const editorTextStyle = () => {
+export class TextStyleManager {
   // The default text style.
-  const presentTextStyle: TextStyle = {
+  public static PresentTextStyle: TextStyle = {
     fontFamily: 'sans-serif',
     fontSize: 16,
     isTextBold: false,
@@ -109,69 +68,127 @@ export const editorTextStyle = () => {
     },
   };
 
-  // Display default value in every input element.
-  fontFamilyChanged(presentTextStyle.fontFamily, presentTextStyle);
-  fontSizeChanged(presentTextStyle.fontSize, presentTextStyle);
-  isTextBoldChanged(presentTextStyle.isTextBold, presentTextStyle);
-  isTextItalicChanged(presentTextStyle.isTextItalic, presentTextStyle);
-  isTextUnderlinedChanged(presentTextStyle.isTextUnderlined, presentTextStyle);
-  textColorChanged(RGBColorConverter.ToString(presentTextStyle.textColor), presentTextStyle);
-  backgroundColorChanged(RGBColorConverter.ToString(presentTextStyle.backgroundColor), presentTextStyle);
-  underlineColorChanged(RGBColorConverter.ToString(presentTextStyle.underlineColor), presentTextStyle);
-
-  // Detect changing of each value.
-  document.getElementById('font-family-selection')?.addEventListener('change', () => {
-    fontFamilyChanged(
-      (<HTMLInputElement>document.getElementById('font-family-selection')).value as TextStyleFontFamilies,
-      presentTextStyle
+  public static Initialize() {
+    // Display default value in every input element.
+    this.fontFamilyChanged(this.PresentTextStyle.fontFamily, this.PresentTextStyle);
+    this.fontSizeChanged(this.PresentTextStyle.fontSize, this.PresentTextStyle);
+    this.isTextBoldChanged(this.PresentTextStyle.isTextBold, this.PresentTextStyle);
+    this.isTextItalicChanged(this.PresentTextStyle.isTextItalic, this.PresentTextStyle);
+    this.isTextUnderlinedChanged(this.PresentTextStyle.isTextUnderlined, this.PresentTextStyle);
+    this.textColorChanged(RGBColorConverter.ToString(this.PresentTextStyle.textColor), this.PresentTextStyle);
+    this.backgroundColorChanged(
+      RGBColorConverter.ToString(this.PresentTextStyle.backgroundColor),
+      this.PresentTextStyle
     );
-  });
-
-  document.getElementById('font-size-input')?.addEventListener('change', () => {
-    fontSizeChanged(Number((<HTMLInputElement>document.getElementById('font-size-input')).value), presentTextStyle);
-  });
-
-  document.getElementById('font-size-larger')?.addEventListener('click', () => {
-    fontSizeChanged(presentTextStyle.fontSize + 1, presentTextStyle);
-  });
-
-  document.getElementById('font-size-smaller')?.addEventListener('click', () => {
-    fontSizeChanged(presentTextStyle.fontSize - 1, presentTextStyle);
-  });
-
-  document.getElementById('is-text-bold-selection')?.addEventListener('click', () => {
-    isTextBoldChanged(!presentTextStyle.isTextBold, presentTextStyle);
-  });
-
-  document.getElementById('is-text-italic-selection')?.addEventListener('click', () => {
-    isTextItalicChanged(!presentTextStyle.isTextItalic, presentTextStyle);
-  });
-
-  document.getElementById('is-text-underlined-selection')?.addEventListener('click', () => {
-    isTextUnderlinedChanged(!presentTextStyle.isTextUnderlined, presentTextStyle);
-  });
-
-  document.getElementById('text-color__color-selection')?.addEventListener('change', () => {
-    textColorChanged(
-      (<HTMLInputElement>document.getElementById('text-color__color-selection')).value,
-      presentTextStyle
+    this.underlineColorChanged(RGBColorConverter.ToString(this.PresentTextStyle.underlineColor), this.PresentTextStyle);
+    (<HTMLInputElement>document.getElementById('text-color__color-selection')).value = RGBColorConverter.ToString(
+      this.PresentTextStyle.textColor
     );
-  });
-
-  document.getElementById('background-color__color-selection')?.addEventListener('change', () => {
-    backgroundColorChanged(
-      (<HTMLInputElement>document.getElementById('background-color__color-selection')).value,
-      presentTextStyle
+    (<HTMLInputElement>document.getElementById('background-color__color-selection')).value = RGBColorConverter.ToString(
+      this.PresentTextStyle.backgroundColor
     );
-  });
-
-  document.getElementById('underline-color__color-selection')?.addEventListener('change', () => {
-    underlineColorChanged(
-      (<HTMLInputElement>document.getElementById('underline-color__color-selection')).value,
-      presentTextStyle
+    (<HTMLInputElement>document.getElementById('underline-color__color-selection')).value = RGBColorConverter.ToString(
+      this.PresentTextStyle.underlineColor
     );
-  });
-};
+
+    // Detect changing of each value.
+    document.getElementById('font-family-selection')?.addEventListener('change', () => {
+      this.fontFamilyChanged(
+        (<HTMLInputElement>document.getElementById('font-family-selection')).value as TextStyleFontFamilies,
+        this.PresentTextStyle
+      );
+    });
+
+    document.getElementById('font-size-input')?.addEventListener('change', () => {
+      this.fontSizeChanged(
+        Number((<HTMLInputElement>document.getElementById('font-size-input')).value),
+        this.PresentTextStyle
+      );
+    });
+
+    document.getElementById('font-size-larger')?.addEventListener('click', () => {
+      this.fontSizeChanged(this.PresentTextStyle.fontSize + 1, this.PresentTextStyle);
+    });
+
+    document.getElementById('font-size-smaller')?.addEventListener('click', () => {
+      this.fontSizeChanged(this.PresentTextStyle.fontSize - 1, this.PresentTextStyle);
+    });
+
+    document.getElementById('is-text-bold-selection')?.addEventListener('click', () => {
+      this.isTextBoldChanged(!this.PresentTextStyle.isTextBold, this.PresentTextStyle);
+    });
+
+    document.getElementById('is-text-italic-selection')?.addEventListener('click', () => {
+      this.isTextItalicChanged(!this.PresentTextStyle.isTextItalic, this.PresentTextStyle);
+    });
+
+    document.getElementById('is-text-underlined-selection')?.addEventListener('click', () => {
+      this.isTextUnderlinedChanged(!this.PresentTextStyle.isTextUnderlined, this.PresentTextStyle);
+    });
+
+    document.getElementById('text-color__color-selection')?.addEventListener('change', () => {
+      this.textColorChanged(
+        (<HTMLInputElement>document.getElementById('text-color__color-selection')).value,
+        this.PresentTextStyle
+      );
+    });
+
+    document.getElementById('background-color__color-selection')?.addEventListener('change', () => {
+      this.backgroundColorChanged(
+        (<HTMLInputElement>document.getElementById('background-color__color-selection')).value,
+        this.PresentTextStyle
+      );
+    });
+
+    document.getElementById('underline-color__color-selection')?.addEventListener('change', () => {
+      this.underlineColorChanged(
+        (<HTMLInputElement>document.getElementById('underline-color__color-selection')).value,
+        this.PresentTextStyle
+      );
+    });
+  }
+
+  // It will be called manually when each value is changed.
+  private static fontFamilyChanged = (newFontFamily: TextStyleFontFamilies, textStyle: TextStyle) => {
+    UILayer.FontFamilyChanged(newFontFamily);
+    BackgroundLayer.FontFamilyChanged(newFontFamily, textStyle);
+  };
+
+  private static fontSizeChanged = (newSize: number, textStyle: TextStyle): void => {
+    UILayer.FontSizeChanged(newSize);
+    BackgroundLayer.FontSizeChanged(newSize, textStyle);
+  };
+
+  private static isTextBoldChanged = (newValue: boolean, textStyle: TextStyle): void => {
+    UILayer.IsTextBoldChanged(newValue);
+    BackgroundLayer.IsTextBoldChanged(newValue, textStyle);
+  };
+
+  private static isTextItalicChanged = (newValue: boolean, textStyle: TextStyle): void => {
+    UILayer.IsTextItalicChanged(newValue);
+    BackgroundLayer.IsTextItalicChanged(newValue, textStyle);
+  };
+
+  private static isTextUnderlinedChanged = (newValue: boolean, textStyle: TextStyle): void => {
+    UILayer.IsTextUnderlinedChanged(newValue);
+    BackgroundLayer.IsTextUnderlinedChanged(newValue, textStyle);
+  };
+
+  private static textColorChanged = (newColor: string, textStyle: TextStyle): void => {
+    UILayer.TextColorChanged(newColor);
+    BackgroundLayer.TextColorChanged(newColor, textStyle);
+  };
+
+  private static backgroundColorChanged = (newColor: string, textStyle: TextStyle): void => {
+    UILayer.BackgroundColorChanged(newColor);
+    BackgroundLayer.BackgroundColorChanged(newColor, textStyle);
+  };
+
+  private static underlineColorChanged = (newColor: string, textStyle: TextStyle): void => {
+    UILayer.UnderlineColorChanged(newColor);
+    BackgroundLayer.UnderlineColorChanged(newColor, textStyle);
+  };
+}
 
 // Every method in this class should be related to DOM operation.
 class UILayer {
@@ -210,7 +227,7 @@ class UILayer {
 
 // Every method in this class should NOT be related to DOM operation.
 export class BackgroundLayer {
-  static FontFamilyChanged(newFontFamily: TextStyleFontFamilies, textStyle: TextStyle) {
+  static FontFamilyChanged(newFontFamily: TextStyleFontFamilies, textStyle: TextStyle): void {
     textStyle.fontFamily = newFontFamily;
   }
 

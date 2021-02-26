@@ -1,6 +1,7 @@
 import '../style/style.css';
 import { applyColorTheme } from './modules/applyColorTheme';
-import { editor } from './modules/editor';
+import { Editor } from './modules/editor';
 
 applyColorTheme();
-editor();
+const editor = new Editor();
+editor.Watch();
