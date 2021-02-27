@@ -90,6 +90,29 @@ export class Editor {
         if ((event as KeyboardEvent).key === 'Enter') {
           // 'Enter' means the end of input.
           (<HTMLElement>this.editorWrapper.querySelector('[role="textbox"][aria-disabled="false"]')).blur();
+        } else {
+          // Adjust the width of the input element.
+          document.getElementById('_dummy__editor_print')!.innerHTML = `<span id="_dummy__measure" style="
+                font-family: '${TextStyleManager.PresentTextStyle.fontFamily}';
+                font-size: ${TextStyleManager.PresentTextStyle.fontSize}px;
+                font-weight: ${TextStyleManager.PresentTextStyle.isTextBold ? 'bold' : 'normal'};
+                font-style: ${TextStyleManager.PresentTextStyle.isTextItalic ? 'italic' : 'normal'};
+                color: ${RGBColorConverter.ToString(TextStyleManager.PresentTextStyle.textColor)} !important;
+                background-color: ${RGBColorConverter.ToString(TextStyleManager.PresentTextStyle.backgroundColor)};
+                text-decoration:
+                  ${
+                    TextStyleManager.PresentTextStyle.isTextUnderlined
+                      ? 'underline ' + RGBColorConverter.ToString(TextStyleManager.PresentTextStyle.underlineColor)
+                      : 'none'
+                  };
+            ">${
+              (<HTMLInputElement>this.editorWrapper.querySelector('[role="textbox"][aria-disabled="false"]')).value
+            }</span>`;
+
+          // The width of the input element should be the same as the dummy text.
+          (<HTMLElement>this.editorWrapper.querySelector('[role="textbox"][aria-disabled="false"]')).style.width = `${
+            document.getElementById('_dummy__measure')?.getBoundingClientRect().width
+          }px`;
         }
       });
   }

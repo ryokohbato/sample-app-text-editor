@@ -178,8 +178,12 @@ module.exports = {
       addUtilities(newUtilities);
 
       const globalUtilities = {
-        '[aria-disabled="true"]': {
+        '[aria-disabled="true"]:not(.r-no-invisible)': {
           display: 'none',
+        },
+
+        '.visibility-hidden': {
+          visibility: 'hidden',
         },
 
         ':not(.dark) [aria-selected="true"]': {
