@@ -2,11 +2,13 @@ import { RGBColorConverter, TextStyleManager } from './textStyle';
 
 export class Editor {
   protected editorWrapper: HTMLElement;
+  protected editorPrint: HTMLElement;
   private IGNORE_FOCUS_MOVE: boolean;
 
   public constructor() {
     TextStyleManager.Initialize();
     this.editorWrapper = document.getElementById('editor__wrapper')!;
+    this.editorPrint = document.getElementById('editor__print')!;
     this.IGNORE_FOCUS_MOVE = false;
   }
 
@@ -34,10 +36,10 @@ export class Editor {
       textBox.remove();
     }
 
-    this.editorWrapper.insertAdjacentHTML(
+    this.editorPrint.insertAdjacentHTML(
       'beforeend',
       `
-    <p style="
+      <span style="
       font-family: '${TextStyleManager.PresentTextStyle.fontFamily}';
       font-size: ${TextStyleManager.PresentTextStyle.fontSize}px;
       font-weight: ${TextStyleManager.PresentTextStyle.isTextBold ? 'bold' : 'normal'};
@@ -50,8 +52,8 @@ export class Editor {
             ? 'underline ' + RGBColorConverter.ToString(TextStyleManager.PresentTextStyle.underlineColor)
             : 'none'
         };
-    ">${(<HTMLInputElement>textBox).value}</p>
-    `
+      ">${(<HTMLInputElement>textBox).value}</span>
+      `
     );
   }
 
@@ -64,11 +66,10 @@ export class Editor {
   }
 
   protected InsertInput() {
-    console.log(TextStyleManager.PresentTextStyle);
-    this.editorWrapper.insertAdjacentHTML(
+    this.editorPrint.insertAdjacentHTML(
       'beforeend',
       `
-    <input type="text" role="textbox" aria-disabled="false" aria-selected="true" style="
+      <input type="text" role="textbox" aria-disabled="false" aria-selected="true" style="
       font-family: '${TextStyleManager.PresentTextStyle.fontFamily}';
       font-size: ${TextStyleManager.PresentTextStyle.fontSize}px;
       font-weight: ${TextStyleManager.PresentTextStyle.isTextBold ? 'bold' : 'normal'};
@@ -81,9 +82,11 @@ export class Editor {
             ? 'underline ' + RGBColorConverter.ToString(TextStyleManager.PresentTextStyle.underlineColor)
             : 'none'
         };
+      height: ${TextStyleManager.PresentTextStyle.fontSize}px;
+      padding: 0;
       outline: none;
-    ">
-    `
+      ">
+      `
     );
   }
 }

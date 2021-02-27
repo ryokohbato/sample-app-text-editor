@@ -162,6 +162,10 @@ module.exports = {
           lineHeight: '30px',
         },
 
+        '.text-0': {
+          fontSize: '0',
+        },
+
         '.filter-shadow__dark': {
           filter: 'drop-shadow(0 0 1px #333333)',
         },
