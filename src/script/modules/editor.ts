@@ -83,5 +83,14 @@ export class Editor {
       ">
       `
     );
+
+    this.editorWrapper
+      .querySelector('[role="textbox"][aria-disabled="false"]')
+      ?.addEventListener('keydown', (event) => {
+        if ((event as KeyboardEvent).key === 'Enter') {
+          // 'Enter' means the end of input.
+          (<HTMLElement>this.editorWrapper.querySelector('[role="textbox"][aria-disabled="false"]')).blur();
+        }
+      });
   }
 }
