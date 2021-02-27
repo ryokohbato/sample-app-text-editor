@@ -24,15 +24,11 @@ export class Editor {
   }
 
   public FocusLost() {
-    console.log('out');
     const textBox = this.editorWrapper.querySelector('[role="textbox"][aria-disabled="false"]');
     if (textBox == null) return;
-
     if ((<HTMLInputElement>textBox).value === '') {
       textBox.remove();
-      console.log('removed');
     } else {
-      console.log((<HTMLInputElement>textBox).value);
       textBox.remove();
     }
 
@@ -58,7 +54,6 @@ export class Editor {
   }
 
   public Focused(event: FocusEvent) {
-    console.log(`in: ${event.target}, ${(<any>event).layerX}`);
     this.InsertInput();
     this.IGNORE_FOCUS_MOVE = true;
     (<HTMLElement>this.editorWrapper.querySelector('[role="textbox"][aria-disabled="false"]'))?.focus();
