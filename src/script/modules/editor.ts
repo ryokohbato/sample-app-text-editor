@@ -4,12 +4,14 @@ export class Editor {
   protected editorWrapper: HTMLElement;
   protected editorPrint: HTMLElement;
   private IGNORE_FOCUS_MOVE: boolean;
+  private INPUT_STYLE_OFFSET: number;
 
   public constructor() {
     TextStyleManager.Initialize();
     this.editorWrapper = document.getElementById('editor__wrapper')!;
     this.editorPrint = document.getElementById('editor__print')!;
     this.IGNORE_FOCUS_MOVE = false;
+    this.INPUT_STYLE_OFFSET = 16;
   }
 
   // Start using editor
@@ -111,7 +113,7 @@ export class Editor {
 
           // The width of the input element should be the same as the dummy text.
           (<HTMLElement>this.editorWrapper.querySelector('[role="textbox"][aria-disabled="false"]')).style.width = `${
-            document.getElementById('_dummy__measure')?.getBoundingClientRect().width
+            document.getElementById('_dummy__measure')!.getBoundingClientRect().width + this.INPUT_STYLE_OFFSET
           }px`;
         }
       });
