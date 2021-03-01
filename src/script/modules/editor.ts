@@ -7,7 +7,6 @@ export class Editor {
   private IGNORE_FOCUS_MOVE: boolean;
 
   public constructor() {
-    TextStyleManager.Initialize();
     this.editorWrapper = document.getElementById('editor__wrapper')!;
     this.editorPrint = document.getElementById('editor__print')!;
     this.IGNORE_FOCUS_MOVE = false;
@@ -15,6 +14,7 @@ export class Editor {
 
   // Start using editor
   public Watch(): void {
+    TextStyleManager.Initialize();
     WindowScale.Initialize();
 
     this.editorWrapper.addEventListener('focusout', () => {
