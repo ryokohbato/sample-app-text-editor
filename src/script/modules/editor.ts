@@ -97,14 +97,6 @@ export class Editor {
                 font-size: ${TextStyleManager.PresentTextStyle.fontSize}px;
                 font-weight: ${TextStyleManager.PresentTextStyle.isTextBold ? 'bold' : 'normal'};
                 font-style: ${TextStyleManager.PresentTextStyle.isTextItalic ? 'italic' : 'normal'};
-                color: ${RGBColorConverter.ToString(TextStyleManager.PresentTextStyle.textColor)} !important;
-                background-color: ${RGBColorConverter.ToString(TextStyleManager.PresentTextStyle.backgroundColor)};
-                text-decoration:
-                  ${
-                    TextStyleManager.PresentTextStyle.isTextUnderlined
-                      ? 'underline ' + RGBColorConverter.ToString(TextStyleManager.PresentTextStyle.underlineColor)
-                      : 'none'
-                  };
             ">${
               (<HTMLInputElement>this.editorWrapper.querySelector('[role="textbox"][aria-disabled="false"]')).value
             }</span>`;
