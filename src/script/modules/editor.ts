@@ -48,6 +48,7 @@ export class Editor {
             ? 'underline ' + RGBColorConverter.ToString(TextStyleManager.PresentTextStyle.underlineColor)
             : 'none'
         };
+      text-decoration-thickness: 25%;
       ">${(<HTMLInputElement>textBox).value}</span>
       `
     );
@@ -77,6 +78,7 @@ export class Editor {
             ? 'underline ' + RGBColorConverter.ToString(TextStyleManager.PresentTextStyle.underlineColor)
             : 'none'
         };
+      text-decoration-thickness: 25%;
       height: ${TextStyleManager.PresentTextStyle.fontSize}px;
       padding: 0;
       outline: none;
