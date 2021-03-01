@@ -1,4 +1,5 @@
 import { RGBColorConverter, TextStyleManager } from './textStyle';
+import { WindowScale } from './windowScale';
 
 export class Editor {
   protected editorWrapper: HTMLElement;
@@ -14,6 +15,8 @@ export class Editor {
 
   // Start using editor
   public Watch(): void {
+    WindowScale.Initialize();
+
     this.editorWrapper.addEventListener('focusout', () => {
       if (!this.IGNORE_FOCUS_MOVE) this.FocusLost();
     });
