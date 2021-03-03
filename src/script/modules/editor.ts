@@ -1,4 +1,5 @@
 import { RGBColorConverter, TextStyleManager } from './textStyle';
+import { CommandHistory } from './commandHistory';
 import { WindowScale } from './windowScale';
 
 export class Editor {
@@ -55,6 +56,18 @@ export class Editor {
       ">${(<HTMLInputElement>textBox).value}</span>
       `
     );
+
+    for (let i = 0; i < (<HTMLInputElement>textBox).value.length; i++) {
+      CommandHistory.Push({
+        // Insert to the end.
+        commandFlag: 'Insert',
+        args: {
+          text: (<HTMLInputElement>textBox).value[i],
+          index: CommandHistory.GetCommandHistoryLength(),
+        },
+        textStyle: TextStyleManager.PresentTextStyle,
+      });
+    }
   }
 
   public Focused(event: FocusEvent) {
