@@ -1,6 +1,6 @@
 import { TextStyle } from './textStyle';
 
-type InsertCommand = {
+export type InsertCommand = {
   commandFlag: 'Insert';
   args: {
     text: string;
@@ -20,9 +20,16 @@ type DeleteCommand = {
 
 export type Command = InsertCommand | DeleteCommand;
 
+interface CommandHistoryInformation {
+  historyLength: number;
+  textCount: number;
+}
+
 export class CommandHistory {
   protected static _history: Array<Command> = []; // Used for Undo
   protected static _history__removed: Array<Command> = []; // Used for Redo
+
+  protected static _history__textCount = 0;
 
   public static Initialize() {
     document.querySelector('.r-header_item__undo')?.addEventListener('click', (event) => {
@@ -37,6 +44,12 @@ export class CommandHistory {
   // Add command history
   public static Push(command: Command): void {
     this._history.push(command);
+
+    if (command.commandFlag === 'Insert') {
+      this._history__textCount += command.args.text.length;
+    } else if (command.commandFlag === 'Delete') {
+      this._history__textCount -= command.args.count;
+    }
 
     this._history__removed = [];
   }
@@ -54,8 +67,11 @@ export class CommandHistory {
     return true;
   }
 
-  public static GetCommandHistoryLength(): number {
-    return this._history.length;
+  public static GetCommandHistoryInformation(): CommandHistoryInformation {
+    return {
+      historyLength: this._history.length,
+      textCount: this._history__textCount,
+    };
   }
 
   public static GetRemovedCommandHistoryLength(): number {

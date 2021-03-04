@@ -63,7 +63,7 @@ export class Editor {
         commandFlag: 'Insert',
         args: {
           text: (<HTMLInputElement>textBox).value[i],
-          index: CommandHistory.GetCommandHistoryLength(),
+          index: CommandHistory.GetCommandHistoryInformation().textCount,
         },
         textStyle: TextStyleManager.PresentTextStyle,
       });
