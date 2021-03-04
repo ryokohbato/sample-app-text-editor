@@ -1,8 +1,11 @@
-import { CommandHistory, Command } from "../src/script/modules/commandHistory";
+import { CommandHistory, Command, InsertCommand } from "../src/script/modules/commandHistory";
 
 describe("Command History", () => {
   it("First", () => {
-    expect(CommandHistory.GetCommandHistoryLength()).toBe(0);
+    expect(CommandHistory.GetCommandHistoryInformation()).toStrictEqual({
+      historyLength: 0,
+      textCount: 0,
+    });
   })
 
   it("Pop - Error", () => {
@@ -12,9 +15,13 @@ describe("Command History", () => {
   })
 
   it("Push", () => {
-    CommandHistory.Push(GetRandomCommand());
+    const _temp = GetRandomCommand();
+    CommandHistory.Push(_temp);
 
-    expect(CommandHistory.GetCommandHistoryLength()).toBe(1);
+    expect(CommandHistory.GetCommandHistoryInformation()).toStrictEqual({
+      historyLength: 1,
+      textCount: (_temp as InsertCommand).args.text.length,
+    });
     expect(CommandHistory.GetRemovedCommandHistoryLength()).toBe(0);
   })
 
